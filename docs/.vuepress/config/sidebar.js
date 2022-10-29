@@ -1,5 +1,6 @@
 // import component from '../../components/sidebar'
+import vueSidebar from '../../vue/vueSidebar'
 
-// export default {
-//   '/components/': component,
-// }
+export default {
+  '/vue/': vueSidebar,
+}

@@ -1,19 +1,38 @@
 export default [
-  // {    
-  //   text: '组件',    
-  //   link: '/components/'  
-  // }, 
-  // {    
-  //   text: '文档',   
-  //    children: [{        
-  //     text: '介绍',        
-  //     link: '/document/introduction/'      
-  //   },      
-  //   {        
-  //     text: '注意事项',        
-  //     link: '/document/tips/'      
-  //   },    
-  // ]},
+  {
+    text: '前端',
+    children: [
+      { 
+        text: 'Vue',
+        children: [
+          {
+            text: 'Vuepress',
+            link: '/vue/vuepress/',
+            activeMatch: '^/vuepress/'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    text: '后端',
+    children: [
+      { 
+        text: 'Java',
+        children: [
+          {
+            text: 'Java 基础',
+            link: '/java/',
+            activeMatch: '^/java/'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'Linux',
+    link: '/linux/'
+  },
   {
     text: '工具箱',
     children: [{
