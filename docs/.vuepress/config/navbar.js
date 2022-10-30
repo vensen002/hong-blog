@@ -7,7 +7,7 @@ export default [
         children: [
           {
             text: 'Vuepress',
-            link: '/vue/vuepress/',
+            link: '/vue/vuepress/init.md',
             activeMatch: '^/vuepress/'
           }
         ]
