@@ -6,6 +6,11 @@ export default [
         text: 'Vue',
         children: [
           {
+            text: 'TypeScript',
+            link: '/vue/typescript/index.md',
+            activeMatch: '^/typescript/'
+          },
+          {
             text: 'Vuepress',
             link: '/vue/vuepress/index.md',
             activeMatch: '^/vuepress/'
@@ -22,8 +27,8 @@ export default [
         children: [
           {
             text: 'Java 基础',
-            link: '/java/',
-            activeMatch: '^/java/'
+            link: '/java/base/index.md',
+            activeMatch: '^/java/base'
           }
         ]
       }
