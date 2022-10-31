@@ -113,3 +113,188 @@ console.log(tup1);
   作用:元祖用于保存定长定数据类型的数据
 */
 ```
+
+## 枚举 enum
+* enum类型是对JavaScript标准数据类型的一个补充。 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。
+``` ts
+export default {}
+
+// 枚举用于表示固定的几个取值
+// 例如: 人的性别只能是男或者女
+
+enum Gender{ 
+  Male,
+  Femal
+}
+
+// 定义了一个名称叫做val的变量, 这个变量中只能保存Male或者Femal
+let val:Gender; 
+val = Gender.Male;
+val = Gender.Femal;
+// val = 'nan'; // 报错
+// val  = false;// 报错
+
+// 注意点: TS中的枚举底层实现的本质其实就是数值类型, 所以赋值一个数值不会报错
+val = 666; // 不会报错
+console.log(Gender.Male); // 0
+console.log(Gender.Femal);// 1
+
+// 注意点: TS中的枚举类型的取值, 默认是从上至下从0开始递增的
+//         虽然默认是从0开始递增的, 但是我们也可以手动的指定枚举的取值的值
+// 注意点: 如果手动指定了前面枚举值的取值, 那么后面枚举值的取值会根据前面的值来递增
+enum Gender2{ 
+  Male=5,
+  Femal
+}
+console.log(Gender2.Male); // 5
+console.log(Gender2.Femal);// 6
+
+// 注意点: 如果手动指定了后面枚举值的取值, 那么前面枚举值的取值不会受到影响
+enum Gender3{ 
+  Male,
+  Femal=10
+}
+console.log(Gender3.Male); // 0
+console.log(Gender3.Femal);// 10
+
+// 注意点: 我们还可以同时修改多个枚举值的取值, 如果同时修改了多个, 那么修改的是什么最后就是什么
+enum Gender4{ 
+  Male=100,
+  Femal=200
+}
+console.log(Gender4.Male); // 100
+console.log(Gender4.Femal);// 200
+
+// 我们可以通过枚举值拿到它对应的数字
+console.log(Gender.Male); // 0
+// 我们还可以通过它对应的数据拿到它的枚举值
+console.log(Gender[0]); // Male
+```
+> * TS中的枚举底层实现的本质其实就是数值类型
+> * 默认是从0开始递增的为元素编号，也可以手动的指定成员的数值
+> * 如果手动指定了前面枚举值的取值, 那么后面枚举值的取值会根据前面的值来递增
+> * 如果手动指定了后面枚举值的取值, 那么前面枚举值的取值不会受到影响
+> * 可以同时修改多个枚举值，修改的值是什么就是什么
+> * 我们可以通过枚举值拿到它对应的数字, 还可以通过它对应的数据拿到它的枚举值
+
+## Any 与 Void
+* **Any:** 表示任意类型, 当我们不清楚某个值的具体类型的时候我们就可以使用`any`
+* **Void:** `void`与`any`相反，它表示没有任何类型。当一个函数没有返回值时，你通常会见到其返回值类型是 `void`
+``` ts
+export default {} 
+
+// any类型
+// any 表示任意类型，当我们不清楚某个值的具体类型的时候我们就可以使用any
+// 在TS中任何数据类型的值都可以负责给any类型
+
+// 使用场景一 
+// 变量的值会动态改变时，比如来自用户的输入，any类型可以让这些变量跳过编译阶段的类型检查
+let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // okay, definitely a boolean
+
+// 使用场景二
+// 改写现有代码时，任意值允许在编译时可选择地包含或移除类型检查
+let notSure2: any = 4;
+// notSure2.ifItExists(); //okay，ifItExists方法在运行时可能存在，但这里并不会检查
+notSure2.toFixed(); // okay, toFixed exists (but the compiler doesn't check) toFixed方法存在，但是在编译时不会检查
+
+// 使用场景三
+// 定义存储各种类型数据的数组时
+let list: any[] = [1, true, "free"];
+
+list[1] = 100;
+
+// void类型
+// 某种程度上来说，void类型像是与any类型相反，它表示没有任何类型。 
+// 当一个函数没有返回值时，你通常会见到其返回值类型是 void
+// 在TS中只有null和undefined可以赋值给void类型
+
+function makeMoney(): void {
+  console.log("I want to make much money and marry a wife!!!");
+  // return "100K beauty" // 报错
+}
+
+makeMoney()
+
+let value:void; 
+// 定义了一个不可以保存任意类型数据的变量, 只能保存null和undefined
+// value = 100; // 报错
+// value = "杨紫";// 报错
+// value = true;// 报错
+// 注意点: null和undefined是所有类型的子类型, 所以我们可以将null和undefined赋值给任意类型
+// 严格模式下会null报错
+// value = null; // 不会报错  
+value = undefined;// 不会报错
+```
+
+## Null 和 Undefined
+* TypeScript里，`undefined`和`null`两者各自有自己的类型分别叫做`undefined`和`null`。
+* 和 `void`相似，它们的本身的类型用处不是很大。
+* 默认情况下`null`和`undefined`是所有类型的子类型。就是说你可以把 `null`和`undefined`赋值给任意类型的变量。
+* 当 `strictNullChecks`(严格模式)开启时，`null`和`undefined`只能赋值给`void`和它们各自。
+* 官方鼓励 `strictNullChecks` 打开使用
+``` ts
+export default {} 
+
+// TypeScript里，undefined和null两者各自有自己的类型分别叫做undefined和null。 
+// 和 void相似，它们的本身的类型用处不是很大
+let u: undefined = undefined;
+let n: null = null;
+
+let money: number = 100;
+// 非严格模式下，可以把null / undefined 赋值给 money ,即"strictNullChecks": false,  
+money = null;
+money = undefined;
+```
+
+## Never 和 Object
+### Never
+* never类型表示的是那些永不存在的值的类型
+* never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型
+* 变量也可能是 never类型，当它们被永不为真的类型保护所约束时
+> * `never`类型是任何类型的子类型，也可以赋值给任何类型；
+> * 没有类型是`never`的子类型或可以赋值给`never`类型（除了`never`本身之外）。
+> * 即使 `any`也不可以赋值给`never`。
+
+### Object
+* `object`表示非原始类型，也就是除`number`，`string`，`boolean`，`symbol`，`null`或`undefined`之外的类型
+* 使用`object`类型，就可以更好的表示像`Object.create`这样的API。
+``` ts
+export default {}
+
+// Never
+// 返回never的函数必须存在无法达到的终点
+function error(message: string): never {
+  throw new Error(message);
+}
+
+// error("你错了！");
+
+// 推断的返回值类型为never
+function fail() {
+  return error("Something failed");
+}
+
+// fail();
+
+// 返回never的函数必须存在无法达到的终点 死循环
+function infiniteLoop(): never {
+  while (true) {
+  }
+}
+
+// Object类型
+// 表示一个对象
+// 定义了一个只能保存对象的变量
+
+let goddess:object; 
+// goddess = 1;
+// goddess = "123";
+// goddess = true;
+goddess = {name:'白鹿', age:27};
+console.log(goddess);
+
+```
+
+## 
