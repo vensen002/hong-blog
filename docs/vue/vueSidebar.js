@@ -2,7 +2,10 @@ export default [
   {
     text: 'TypeScript',
     collapsible: true,
-    children: ['/vue/typescript/index.md'],
+    children: [
+      '/vue/typescript/index.md',
+      '/vue/typescript/02index.md',
+    ],
   },
   {
     text: 'Vuepress',
