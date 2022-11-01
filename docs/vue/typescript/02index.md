@@ -297,4 +297,157 @@ console.log(goddess);
 
 ```
 
-## 
+## 类型断言
+
+* 什么是类型断言?
+> 类型断言可以用来手动指定一个值的类型，即允许变量从一种类型更改为另一种类型。<br/>
+>通俗的说就是我相信我自己在定义什么类型
+* 语法格式<br/>
+`<类型>值`<br/>
+`值 as 类型`
+``` ts
+/*
+  1.什么是类型断言?
+
+  类型断言可以用来手动指定一个值的类型，即允许变量从一种类型更改为另一种类型。
+  通俗的说就是我相信我自己在定义什么类型
+
+  2.语法格式
+    2.1 <类型>值
+    2.2 值 as 类型
+*/
+
+let str = "世界上最遥远的距离就是,你是if而我是else, 似乎一直相伴但又永远相离";
+
+// 方式一
+// let len = (<string>str).length;
+// console.log(len);
+
+
+// 方式二
+// let len = (str as string).length;
+// console.log(len);
+
+
+
+// function TypeAs(x: number | string){
+//   console.log(x.length);
+  
+// }
+
+// TypeAs("世界上最痴心的等待,是我当case你当switch,或许永远都选不上自己")
+
+
+function TypeAs(x: number | string){
+  let len = (x as string).length;
+  // let len = (<string>x).length;
+  console.log(len);
+  
+}
+TypeAs("世界上最痴心的等待,是我当case而你当switch,或许永远都选不上自己")
+
+```
+
+## 变量声明与解构
+### 变量声明
+* 使用 `var` | `let` | `const` 关键字进行变量声明
+* 一直以来我们都是通过`var`关键字定义JavaScript变量。
+* `let`在很多方面与`var`是相似的，但是可以避免在JavaScript里解决一些常见问题。
+* `const`是对`let`的一个增强，它能阻止对一个变量再次赋值。
+``` ts
+// 变量声明
+// 使用 var | let | const 进行变量声明
+var x = 10;
+let y = 10; // let 功能与 var 相似，但是解决了跨作用域访问的问题，只能在它自己的作用域里可以访问
+const c = 20;
+// c = 100; // error const是常量声明，无法更改
+```
+### 解构
+
+* 数组结构
+``` ts
+// 数组解构
+let input = [1, 2];
+let [first, second] = input;
+console.log(first); // outputs 1
+console.log(second); // outputs 2
+
+let [one, ...rest] = [1, 2, 3, 4];
+console.log(one); // outputs 1
+console.log(rest); // outputs [ 2, 3, 4 ]
+console.log(...rest); // outputs 2 3 4 
+
+let [, tow, , four] = [1, 2, 3, 4];
+console.log(tow); // 2
+console.log(four); // 4
+```
+* 对象解构
+``` ts
+// 对象解构
+// 这通过 o.a and o.b 创建了 a 和 b 。 注意，如果你不需要 c 你可以忽略它。
+let o = {
+  a: "foo",
+  b: 12,
+  c: "bar"
+};
+let { a, b } = o;
+console.log(a , b); // foo 12
+// 了解这一点就基本够用了
+
+// 没有声明的赋值
+// 注意，我们需要用括号将它括起来，因为Javascript通常会将以 { 起始的语句解析为一个块。
+({ x, y } = { x: "baz", y: 101 }); // ts会报错，但js可以运行
+console.log(x , y) // baz 101
+
+// 在对象里使用...语法创建剩余变量
+let { a: a1, ...passthrough } = o;
+let total = passthrough.b + passthrough.c.length;
+console.log(total) // 15
+
+// 属性重命名
+let { a: a2, b: b2 } = o;
+// 相当于 let a2 = o.a; let b2 = o.b;
+console.log( a2 , b2)
+
+// 指定类型
+let { a: a3, b: b3 } : { a: string, b: number } = o;
+
+// 默认值
+// 即使 b 为 undefined ， keepWholeObject 函数的变量 wholeObject 的属性 a 和 b 都会有值。
+function keepWholeObject(wholeObject: { a: string, b?: number }) {
+  let { a, b = 1001 } = wholeObject;
+  console.log(a , b) 
+};
+let object = {
+  a: '你好',
+  // b: 100,
+  c: '不好' 
+}
+keepWholeObject(object) // 你好 1001
+```
+
+## bight与symbol
+* bight类型: 表示非常大的数
+* symbol类型: 表示全局唯一引用
+``` ts
+export default {}
+
+export default {}
+
+// bight类型: 表示非常大的数
+// symbol类型: 表示全局唯一引用
+// ES2020可用
+
+const Hundred1: bigint = BigInt(100)
+const Hundred2: bigint = 100n
+console.log(Hundred1) // 100n
+console.log(Hundred2) // 100n
+
+const firstName = Symbol("name")
+const secondName = Symbol("name")
+console.log(firstName) // Symbol(name)
+console.log(secondName)// Symbol(name)
+if (firstName === secondName) { // false
+  console.log('ok')
+}
+```
