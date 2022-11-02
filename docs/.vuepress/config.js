@@ -16,11 +16,11 @@ export default defineUserConfig({
   /**
    * title 站点标题 type: string 默认值: ''
    */
-  title: '鸿博客',
+  title: '鸿笔记',
   /**
    * description 站点描述 type: string 默认值: ''
    */
-  description: '鸿博客，我会为大家提供免费编程知识，逐渐丰富内容',
+  description: '鸿笔记，我会为大家提供免费编程知识，逐渐丰富内容',
   /**
    * head <head>标签里增加新的标签 type: HeadConfig[] 默认值: []
    */

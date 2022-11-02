@@ -451,3 +451,39 @@ if (firstName === secondName) { // false
   console.log('ok')
 }
 ```
+
+## type别名
+* 类型别名就是给一个类型起个新名字, 但是它们都代表同一个类型
+
+``` ts
+export default {} 
+
+// type 类型别名
+// 第一种 
+type beautys = "邱淑贞" | "赵雅芝" | "王祖贤" | "朱茵";
+let one: beautys;
+one = "邱淑贞"; // 只能是 beautys 定义数据中的一个
+// one = 100; // error 
+
+// 第二种
+// 定义了一种函数类型 接受参数类型 a,b 只能是 number 类型，返回值是 number 类型的函数别名
+type myfun = (a: number, b: number) => number; 
+let fun: myfun = (a, b) => a + b; // let fun: myfun = (a: number, b: number) => a + b; 写的时候最好也把参数类型加上
+console.log( fun(10, 100) ) // 110
+// fun('10', '100') // error string参数不能赋给 number 类型
+
+// 第三种 定义对象别名
+type myGoddass = {
+  name: string,
+  age: number,
+  gender: string,
+  actor?: boolean // 可选类型
+}
+
+let shuzhen: myGoddass = {
+  name: '邱淑贞',
+  age: 28,
+  gender: '女'
+}
+```
+
