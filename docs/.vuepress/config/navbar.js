@@ -36,11 +36,18 @@ export default [
   },
   {
     text: 'Linux',
-    link: '/linux/'
+    children: [{
+      text: '基础命令',
+      link: '/linux/command.md'
+    }
+    ]
   },
   {
     text: '工具箱',
     children: [{
+        text: 'Markdown 语法',
+        link: 'https://www.runoob.com/markdown/md-tutorial.html'
+      },{
         text: '在线编辑',
         children: [{
           text: '图片压缩',
