@@ -1,4 +1,4 @@
-import{_ as e,o as i,c as l,a}from"./app.f786cee3.js";const d={},n=a(`<h1 id="markdown-基础语法" tabindex="-1"><a class="header-anchor" href="#markdown-基础语法" aria-hidden="true">#</a> markdown 基础语法</h1><ul><li><em>斜体</em></li></ul><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>*Italic*
+import{_ as e,o as i,c as l,a}from"./app.cebfa1e5.js";const d={},n=a(`<h1 id="markdown-基础语法" tabindex="-1"><a class="header-anchor" href="#markdown-基础语法" aria-hidden="true">#</a> markdown 基础语法</h1><ul><li><em>斜体</em></li></ul><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>*Italic*
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul><li><strong>粗体</strong></li></ul><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>**Bold**
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul><li>#标题</li></ul><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code># heading 
 ## heading
