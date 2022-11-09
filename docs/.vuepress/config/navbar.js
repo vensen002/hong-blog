@@ -37,14 +37,17 @@ export default [
   {
     text: 'Linux',
     children: [{
+      text: '快捷技巧',
+      link: '/linux/skill.md'
+    },{
       text: '目录结构',
       link: '/linux/sys-contents.md'
     },{
-      text: '基础命令',
+      text: '常用命令',
       link: '/linux/command.md'
     },{
-      text: 'Linux 小技巧',
-      link: '/linux/skill.md'
+      text: 'Vi / Vim',
+      link: '/linux/vim.md'
     }]
   },
   {

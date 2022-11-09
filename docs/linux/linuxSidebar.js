@@ -1,5 +1,6 @@
 export default [
+  '/linux/skill.md',
   '/linux/sys-contents.md',
   '/linux/command.md',
-  '/linux/skill.md',
+  '/linux/vim.md',
 ]
