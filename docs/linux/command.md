@@ -116,7 +116,84 @@ command 文件
 head [-n number] 文件 
 // 取出文件后面几行
 tail [-n number -f] 文件 
+// head -n 5 文件 <== 展示文件的前5行内容
+// tail -5 文件 <== 展示文件的最后5行内容
 ```
 * `-n`：后面接数字，代表显示几行的意思
 * `-f`：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测
+* `head`和 `tail`不指定行数时，默认展示10行内容
+## 其他常用命令
+
+### touch (创建文件)
+touch 命令无选项，参数必填，表示要创建的文件路径  
+相对、绝对、特殊路径符均可以使用，注意不能创建目录
+```sh
+touch Linux路径
+```
+
+### grep (过滤内容)
+``` sh
+grep [-n] 关键字 文件路径
+```
+* `-n`：在结果中显示匹配的行的行号
+* **关键字**：过滤的关键字，比较复杂的内容用`""`包围起来
+* **文件路径**：表示要过滤内容的文件路径
+![grep-n](\images\linux\command\grep.png)
+
+### wc (数量统计)
+可以通过`wc`命令统计文件的行数、单词数量等
+```sh
+wc [-c -m -l -w] 文件路径
+```
+* `-c`：统计**bytes**数量
+* `-m`：统计**字符**数量
+* `-l`：统计**行数**数量
+* `-w`：统计**单词**数量
+
+### | (管道符)
+将管道符左边命令的**结果**，作为右边命令的**输入**
+``` sh
+// 与 grep 搭配使用
+ls -a | grep bash
+// 与 wc 搭配使用
+ls -l /usr/bin | wc -l
+```
+![grep + |](\images\linux\command\grep+管道符.png)
+> | 还可以重复嵌套使用
+
+### which (查找命令的程序文件)
+``` sh
+which command
+```
+![which](\images\linux\command\which.png)
+
+### find (查找指定文件)
+```sh
+// 按照文件名查找
+find 起始路径 -name "文件名"
+// 按文件大小查找
+find 起始路径 -size +|-n[kMG]
+// find / -size +100M       <== 从根目录查找大于100M的文件
+```
+* `+ -`：大于小于
+* `n`：文件大小数字
+* `kMG`：文件大小单位；k：kb，M：MB，G：GB
+
+### echo 与 反引号 `
+`echo`相当于Java中的`print`打印内容
+```sh
+echo hello linux
+echo `pwd` 
+```
+* `echo` 与**反引号``** 结合使用,反引号内的内容表示命令执行,再把执行结果打印出来
+![ehco](\images\linux\command\echo.png)
+
+### > >> (重定向符号)
+```sh
+command > text.txt
+command >> text.txt
+```
+* `>`：将左侧命令的结果，**覆盖**写入到符号右侧指定的文件中
+* `>>`：将左侧命令的结果，**追加**写入到符号右侧指定的文件中
+
 
