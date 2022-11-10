@@ -1,4 +1,4 @@
-import{_ as e,o as d,c as a,a as r}from"./app.401aab74.js";const n="/images/linux/sys-contents/根目录文件.png",i={},s=r(`<h1 id="linux-系统目录结构" tabindex="-1"><a class="header-anchor" href="#linux-系统目录结构" aria-hidden="true">#</a> Linux 系统目录结构</h1><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">ls</span> /
+import{_ as e,o as d,c as a,a as r}from"./app.01641f51.js";const n="/images/linux/sys-contents/根目录文件.png",i={},s=r(`<h1 id="linux-系统目录结构" tabindex="-1"><a class="header-anchor" href="#linux-系统目录结构" aria-hidden="true">#</a> Linux 系统目录结构</h1><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">ls</span> /
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><img src="`+n+`" alt="根目录文件"></p><h2 id="树状目录结构" tabindex="-1"><a class="header-anchor" href="#树状目录结构" aria-hidden="true">#</a> 树状目录结构</h2><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>/
 ├─ bin        &lt;--- 重要
 ├─ boot

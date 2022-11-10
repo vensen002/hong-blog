@@ -49,3 +49,67 @@ date [-d] [+格式化字符串]
     - `%S`：秒（00~59）
     - `%s`：自 1970-01-01 00:00:00 UTC 到现在的秒数
 ![date](\images\linux\practical\date.png)
+
+**修改时区**
+root权限下
+``` sh
+rm -f /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+**ntp 程序**
+通过`ntp`程序自动校准系统时间
+``` sh
+// 安装
+yum -y install ntp
+// 启动并设置开机自启
+systemctl start ntpd
+systemctl enable ntpd
+```
+``` sh
+// 也可以手动校准时间 需要root权限
+ntpdate -u ntp.aliyun.com
+```
+
+## IP 地址和主机名
+IP地址是联网计算机的网络地址，用于在网络中进行定位  
+格式: `a.b.c.d`，其中abcd是0~255的数字
+``` sh
+// 通过下面命令，查看IP地址相关信息
+ifconfig
+```
+* 如果 `ifconfig` 无法使用，那么需要安装 `net-tools` 包  
+**特殊IP地址**
+* `127.0.0.1`：代指本机
+* `0.0.0.0`：
+    - 可以用于指代本机
+    - 可以在端口绑定中用来确定绑定关系
+    - 在一些IP地址限制中，表示所有IP，如放行规则设置为`0.0.0.0`，表示允许任意IP访问
+**主机名**
+主机名就是主机的名称，用于标识一个计算机
+* `hostname`：查看主机名
+* `hostnamectl set-hostname 主机名`：修改主机名（需要<span style="color: red">**root**</span>权限）  
+
+**域名解析**  
+可以通过主机名找到对应计算机的IP地址，这就是主机名映射（域名解析）  
+先通过系统本地的记录去查找，如果找不到就联网去公开DNS服务器去查找
+``` text
+访问                检查本地hosts
+www.baidu.com   --> Windows / Linux                       有
+                    下是否有baidu.com的IP地址记录 --> 判断 --> 打开网站
+                                                      | 无       ^
+                                                      V          | 有
+                                            联网询问公开DSN
+                                            服务器是否有记录 --> 判断
+                                                                 | 无
+                                                                 v
+                                                             网站不存在
+                                                                404
+```
+1. 先查看自己本机的记录（私人地址本）
+    - `Windows`：C:\Windows\System32\drivers\etc\hosts
+    - `Linux`：/etc/hosts
+2. 再去联网DNS服务器（144.144.144.144 8.8.8.8 等公开的DNS服务器）
+
+
+
