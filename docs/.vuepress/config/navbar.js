@@ -48,6 +48,15 @@ export default [
     },{
       text: 'Vi / Vim',
       link: '/linux/vim.md'
+    },{
+      text: 'yum命令',
+      link: '/linux/yum.md'
+    },{
+      text: 'apt 命令',
+      link: '/linux/apt.md'
+    },{
+      text: '实用操作',
+      link: '/linux/practical.md'
     }]
   },
   {

@@ -3,4 +3,7 @@ export default [
   '/linux/sys-contents.md',
   '/linux/command.md',
   '/linux/vim.md',
+  '/linux/yum.md',
+  '/linux/apt.md',
+  '/linux/practical.md',
 ]

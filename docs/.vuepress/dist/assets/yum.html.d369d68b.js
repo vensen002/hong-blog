@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6f0d749c","path":"/linux/yum.html","title":"yum 命令","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"linux/yum.md"}');export{t as data};

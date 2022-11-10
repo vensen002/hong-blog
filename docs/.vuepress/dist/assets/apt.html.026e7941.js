@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-9537f870","path":"/linux/apt.html","title":"apt 命令","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"linux/apt.md"}');export{t as data};
