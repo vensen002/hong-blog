@@ -275,3 +275,87 @@ sar -n DEV num1 num2
 // num1：刷新间隔（不填就查看一次）
 // num2：查看次数（不填无限次数）
 ```
+
+## 环境变量
+**定义**  
+环境变量是一组信息记录，类型是Key Value，用于操作系统运行的时候记录关键信息。  
+```sh
+// 使用`env`命令可以查看当前系统的环境变量。
+env
+```  
+**$符号**  
+在Linux系统中，`$`符号被用于取“变量”的值。  
+取环境变量的值就可以通过语法：`$环境变量名` 来取值
+```sh
+// 取 PATH 环境变量
+echo $PATH
+// 取值在拼接
+echo ${PATH}ABC
+```
+![$取值](\images\linux\practical\取值.png)
+
+**自定义环境变量**  
+* 临时生效：export 变量名=变量值
+* 永久生效：
+    - 当前用户生效，配置在当前用户的：**~/.bashrc**
+    - 全局用户生效，配置在系统的：**/etc/profile**
+    - 通过语法：`source 配置文件`，进行立即生效，或**重新登录**生效
+
+## 压缩、解压
+### tar命令
+Linux和Mac系统常用有2种压缩格式，后缀名分别是：  
+* `.tar`：tarball，归档文件，即简单的将文件封装到一个`.tar`的文件中，体积没有太多的减少
+* `.gz`：也常见为`.tar.gz`，gzip格式压缩文件，使用gzip压缩算法将文件压缩到一个文件内，可以极大的减少压缩后的体积  
+
+**语法**
+```sh
+tar [-c -v -x -f -z -C] 目的文件 目标文件1...
+```
+* `-c`：创建压缩文件，用于压缩模式
+* `-v`：显示压缩、解压过程，用于查看进度
+* `-x`：解压文件
+* `-f`：要创建的文件，或解压的文件；`-f`必选且位置必须处于最后一个
+* `-C`：选择解压的目的地，用于解压模式  
+
+**常用组合**  
+```sh
+// 压缩
+// 将 1.txt 2.txt 3.txt 打包压缩到 test.tar 文件中
+tar -cvf test.tar 1.txt 2.txt 3.txt
+// 将 1.txt 2.txt 3.txt 使用 gzip 算法压缩到 test.tar.gz 文件中
+tar -zcvf test.tar.gz 1.txt 2.txt 3.txt
+
+// 解压
+// 解压 test.tar 至当前目录
+tar -xvf test.tar
+// 解压 test.tar 至指定目录(/home/test)
+tar -xvf test.tar -C /home/test
+// 解压 gzip 算法的文件
+tar -zxvf test.tar.gz -C /home/test
+```
+* `f`必须要发到最后
+### zip命令
+使用`zip`打包压缩，使用`unzip`解压  
+
+**zip语法**  
+```sh
+zip [-r] 目的文件 目标文件1...
+```
+* `-r`：被压缩的内容有文件夹，必须使用`-r`选项
+
+**unzip语法**
+```sh
+unzip [-d] 目的路径
+```
+* `-d`：指定要解压去的位置
+
+**示例**
+```sh
+// 压缩
+zip test.zip 1.txt 2.txt 3.txt
+zip -r test.zip 1.txt 2.txt test1 test2
+
+// 解压
+unzip test.zip
+unzip test.zip -d /home/test
+```
