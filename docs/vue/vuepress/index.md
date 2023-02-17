@@ -53,17 +53,17 @@ npm run docs:dev
 ├─ docs                   <--- 存放你的 .md 文件
 │  ├─ .vuepress           <--- 存放VuePress 相关的文件
 │  │  ├─ config           <--- 配置文件夹，单独存放导航栏和侧边栏
-│  │  │  ├─ navbar.js     <--- 导航栏配置
-│  │  │  └─ sidebar.js    <--- 侧边栏配置
+│  │  │  ├─ navbar.ts     <--- 导航栏配置
+│  │  │  └─ sidebar.ts    <--- 侧边栏配置
 │  │  ├─ dist             <--- 不用创建，build时会自动创建
 │  │  ├─ public           <--- 公共资源文件夹
 │  │  │  └─ images        <--- 图片文件
-│  │  ├─ client.js        <--- 客户端配置
-│  │  └─ config.js        <--- 总局配置
+│  │  ├─ client.ts        <--- 客户端配置
+│  │  └─ config.ts        <--- 总局配置
 │  └─ vue                 <--- 存放 vue 相关的文章    --- 系自己创建
 │  │  └─ vuepress         <--- 存放 vuepress 相关文章 
 │  │  │  └─ index.md      <--- vuepress 的首页
-│  │  └─ vueSidebar.js    <--- vue 下全局侧边栏配置
+│  │  └─ vueSidebar.ts    <--- vue 下全局侧边栏配置
 │  └─ README.md           <--- 项目首页，README.md / index.md
 ├─ .gitignore             <--- git全局忽略配置
 └─ package.json           <--- 不介绍了
@@ -71,7 +71,7 @@ npm run docs:dev
 
 ## 配置文件
 
-* config.js
+* config.ts
 ``` js
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
@@ -113,7 +113,7 @@ export default defineUserConfig({
 
 })
 ```
-* navbar.js
+* navbar.ts
 ``` js
 export default [
   {
@@ -169,16 +169,17 @@ export default [
 ]
 ```
 
-* sidebar.js
+* sidebar.ts
+
 ```js
-import vueSidebar from '../../vue/vueSidebar'
+import vueSidebar from './vueSidebar'
 
 export default {
-  '/vue/': vueSidebar,
+    '/vue/': vueSidebar,
 }
 ```
 
-* vueSidebar.js
+* vueSidebar.ts
 ```js
 export default [
   {
