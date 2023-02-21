@@ -30,7 +30,7 @@ export default defineUserConfig({
   }),
   // 指定页面文件的 Patterns 。
   pagePatterns: ['**/*.md', '!**/README.md', '!.vuepress', '!node_modules'],
-  host: 'localhost', //指定开发服务器的主机名。
-  port: 8080, // 指定开发服务器的端口号。
-  open: false, // 开发服务器启动后打开浏览器。
+  // host: 'localhost', //指定开发服务器的主机名。
+  // port: 8080, // 指定开发服务器的端口号。
+  // open: false, // 开发服务器启动后打开浏览器。
 })
