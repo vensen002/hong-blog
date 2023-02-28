@@ -23,6 +23,10 @@ export default [
             text: 'Vuepress',
             link: '/vue/vuepress/index.md',
             activeMatch: '^/vuepress/'
+          },
+          {
+            text: 'webpack',
+            link: '/frontend/webpack/index.md'
           }
         ]
       }
